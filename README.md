@@ -5,9 +5,6 @@ For when you need to show a graph, but the values don't really matter. Only the 
 ## Attributions
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- Graphs are drawn with [timqian/chart.xkcd](https://github.com/timqian/chart.xkcd).
-- Wrapped to be used in React by [obiwankenoobi/chart.xkcd-react](https://github.com/obiwankenoobi/chart.xkcd-react).
+- Graphs are drawn with [Rough.js](https://roughjs.com/).
 - Favicon generated with [favicon.io](https://favicon.io/emoji-favicons/chart-increasing)
-
-## TODO
-- Download svg? [png](https://gist.github.com/gustavohenke/9073132)?
+- Fancy inputs inspired from [Lucas Oliveira](https://codepen.io/lucasyem/pen/ZEEYKdj).
