@@ -19,8 +19,6 @@ export default function Footer() {
 
 const Wrapper = styled.footer`
     text-align: center;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     left: 0;
     font: 300 1rem/1.25rem SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;

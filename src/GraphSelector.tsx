@@ -16,22 +16,12 @@ function notEmpty<T>(value: T | null): value is T {
 export default function GraphSelector({ definition, update }: Props) {
   return (
     <>
+      <Input label="Title" value={definition.title} onChange={(e) => update({ ...definition, title: e.target.value })} />
+      <Input label="Horizontal axis" value={definition.xAxis} onChange={(e) => update({ ...definition, xAxis: e.target.value })} />
+      <Input label="Vertical axis" value={definition.yAxis} onChange={(e) => update({ ...definition, yAxis: e.target.value })} />
+
+      <h3>Lines</h3>
       <ul>
-        <Input label="Title" value={definition.title} onChange={(e) => update({ ...definition, title: e.target.value })} />
-        <br />
-
-        <label>
-          Horizontal axis:
-          <input value={definition.xAxis} onChange={(e) => update({ ...definition, xAxis: e.target.value })} />
-        </label>
-        <br />
-
-        <label>
-          Vertical axis:
-          <input value={definition.yAxis} onChange={(e) => update({ ...definition, yAxis: e.target.value })} />
-        </label>
-        <br />
-
         {definition.data.map((value, key) => {
           function updateOne<T>(target: T, f: (newVal: T, og: Data) => (Data | null)): void {
             update({
@@ -42,19 +32,19 @@ export default function GraphSelector({ definition, update }: Props) {
 
           return (
             <li key={`label-${key}`}>
-              <input value={value.label} placeholder="Label" onChange={e => updateOne(e.target.value, label => ({ ...value, label }))} />
-
-              <select value={value.direction} onChange={e => updateOne(e.target.value, direction => ({ ...value, direction: toDirection(direction) }))}>
-                <option value="upward">Up ➚</option>
-                <option value="downward">Down ➘</option>
-              </select>
-
               <select value={value.form} onChange={e => updateOne(e.target.value, form => ({ ...value, form: toForm(form) }))}>
                 <option value="linear">Linear</option>
                 <option value="bell">Bell</option>
                 <option value="exp">Exponential</option>
                 <option value="log">Logarithmic</option>
               </select>
+
+              <select value={value.direction} onChange={e => updateOne(e.target.value, direction => ({ ...value, direction: toDirection(direction) }))}>
+                <option value="upward">Up ➚</option>
+                <option value="downward">Down ➘</option>
+              </select>
+
+              <input value={value.label} placeholder="Label" onChange={e => updateOne(e.target.value, label => ({ ...value, label }))} />
 
               <ColorPicker color={value.color} onChange={e => updateOne(e.target.value, color => ({ ...value, color }))} />
 
@@ -67,22 +57,26 @@ export default function GraphSelector({ definition, update }: Props) {
   );
 }
 
-function Input(props) {
+function Input(props: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
   const { label, ...rest } = props;
   return (
     <Wrapper>
-      <InputField {...rest} placeholder={label} name="name" id='name' />
-      <Label htmlFor='name'>{label}</Label>
+      <InputField placeholder={label} {...rest} />
+      <Label>{label}</Label>
     </Wrapper>
   )
 }
 
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const Wrapper = styled.div`
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
-  width: 50%;
 `;
 
 const Label = styled.label`

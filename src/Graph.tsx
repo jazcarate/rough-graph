@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import rough from 'roughjs/bin/rough';
+import styled from 'styled-components';
 
 import { Data, Definition } from './definition';
 
@@ -151,10 +152,14 @@ export default function Graph({ definition }: Props) {
     }
   }, [definition]);
   return (
-    <>
+    <Center>
       <div style={{ fontFamily: 'Indie Flower' }}>&nbsp;</div> {/* Preload */}
       <canvas style={{ display: 'none' }} ref={canvas} width={width} height={height} />
-      <img src={src} alt="Graphz!" />
-    </>
+      <img src={src} alt="Graphz!" width={width} height={height} />
+    </Center>
   );
 }
+
+const Center = styled.div`
+  text-align: center;
+`;

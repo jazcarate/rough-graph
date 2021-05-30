@@ -13,12 +13,12 @@ export type Definition = {
 }
 
 export function empty(): Definition {
-    return {
+    return newData({
         title: "",
         xAxis: "",
         yAxis: "",
         data: []
-    };
+    });
 }
 
 export function newData(defs: Definition): Definition {
