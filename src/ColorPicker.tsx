@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { GithubPicker } from 'react-color';
 import styled from 'styled-components';
+import BigButton from './BigButton';
 
 const defaultColors = ['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#000000', '#EB9694', '#FAD0C3', '#FEF3BD', '#C1E1C5', '#BEDADC', '#C4DEF6', '#BED3F3', '#B7B7B7'];
 
@@ -26,7 +27,7 @@ export default function ColorPicker({ color, onChange }: Props) {
   const [showing, setShowing] = useState(false);
   return (
     <Wrapper>
-      <button onClick={() => setShowing(!showing)} style={{ backgroundColor: color }}>🎨</button>
+      <BigButton onClick={() => setShowing(!showing)} style={{ backgroundColor: color }}>🎨</BigButton>
       {showing && <Popover>
         <GithubPicker
           color={color}
@@ -44,7 +45,7 @@ const Wrapper = styled.span`
 
 const Popover = styled.div`
   position: absolute;
-  z - index: 2;
-  top: 25px;
-  left: 2px;
+  z-index: 2;
+  top: 35px;
+  left: 20px;
 `;
