@@ -1,7 +1,7 @@
 export type Data = {
     label: string,
     direction: 'upward' | 'downward',
-    form: 'linear' | 'bell' | 'exp' | 'log';
+    form: 'linear' | 'horizontal' | 'bell' | 'exp' | 'log';
     color: string;
 };
 
@@ -35,9 +35,10 @@ export function toDirection(dir: String): Data["direction"] {
         default: return "upward";
     }
 }
-export function toForm(dir: String): Data["form"] {
+export function toForm(dir: string): Data["form"] {
     switch (dir) {
         case "bell": return "bell";
+        case "horizontal": return "horizontal";
         case "exp": return "exp";
         case "log": return "log";
         default: return "linear";

@@ -78,6 +78,7 @@ function representation(form: Data["form"]): (x: number) => number {
     case 'bell': return x => 1 / (1 + (5 * (x - 1 / 2)) ** 2) ** (3 / 2);
     case 'exp': return x => x ** 5;
     case 'log': return x => x ** (1 / 5);
+    case 'horizontal': return _ => 1;
     default: return () => 1;
   }
 }

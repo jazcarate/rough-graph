@@ -37,6 +37,7 @@ export default function GraphSelector({ definition, update }: Props) {
             <li key={`label-${key}`}>
               <Select value={value.form} onChange={e => updateOne(e.target.value, form => ({ ...value, form: toForm(form) }))}>
                 <option value="linear">Linear</option>
+                <option value="horizontal">Horizontal</option>
                 <option value="bell">Bell</option>
                 <option value="exp">Exponential</option>
                 <option value="log">Logarithmic</option>
