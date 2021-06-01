@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import rough from 'roughjs/bin/rough';
 import styled from 'styled-components';
 
-import { Data, Definition, density_, _density } from './definition';
+import { Data, Definition, density_ } from './definition';
 
 type Props = {
   definition: Definition;
@@ -140,7 +140,7 @@ export default function Graph({ definition }: Props) {
         } else {
           const width = (endX - startX) / d - padding,
           axisY = height - axisFontSize - padding;
-          
+
           p.forEach(([x, y]) => {
             rc.rectangle(x, y, width, axisY - y, { fill: data.color });
           });
