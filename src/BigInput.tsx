@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 
 const Label = styled.label`
   position: absolute;
+  z-index: -1;
   top: 0;
   display: block;
   transition: 0.2s;
