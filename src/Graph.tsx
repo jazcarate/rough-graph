@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import rough from 'roughjs/bin/rough';
 import styled from 'styled-components';
 
-import { Data, Definition } from './definition';
+import { Data, Definition, density_, _density } from './definition';
 
 type Props = {
   definition: Definition;
@@ -17,8 +17,7 @@ const width = 400,
   labelFontSize = 15,
   graphPadding = 50;
 
-const steps = 10,
-  startX = padding + axisFontSize + graphPadding,
+const startX = padding + axisFontSize + graphPadding,
   startY = height - padding - axisFontSize - graphPadding,
   endX = width - padding - graphPadding,
   endY = titleFontSize + graphPadding + padding;
@@ -26,7 +25,7 @@ const steps = 10,
 type Points = [number, number][]
 
 // from 0 to 1 both in x and y
-function plot(f: (i: number) => number): Points {
+function plot(f: (i: number) => number, steps = 10): Points {
   let points: Points = [];
   for (let x = 0; x < 1; x += 1 / steps) {
     points.push([x, f(x)]);
@@ -68,7 +67,7 @@ function offset(index: number, og: Points): Points {
 }
 
 function pointsFrom(data: Data, index: number): [number, number][] {
-  return offset(index, stretch(flip(data.direction === 'downward', plot(representation(data.form)))));
+  return offset(index, stretch(flip(data.direction === 'downward', plot(representation(data.form), density_(data.density)))));
 }
 
 // https://www.wolframalpha.com/input/?i=plot+1+%2F+%281%2B%285*%28x-1%2F2%29%29+**+2%29**%283%2F2%29%2C+x%3D0..1%2C+y%3D0..1
@@ -134,8 +133,18 @@ export default function Graph({ definition }: Props) {
       // Graph
 
       definition.data.forEach((data, index) => {
-        const p = pointsFrom(data, index);
-        rc.curve(p, { stroke: data.color });
+        const p = pointsFrom(data, index),
+              d = data.density;
+        if (d === 'infinite') {
+          rc.curve(p, { stroke: data.color });
+        } else {
+          const width = (endX - startX) / d - padding,
+          axisY = height - axisFontSize - padding;
+          
+          p.forEach(([x, y]) => {
+            rc.rectangle(x, y, width, axisY - y, { fill: data.color });
+          });
+        }
       });
 
       definition.data

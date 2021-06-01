@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Data, Definition, newData, toDirection, toForm } from './definition';
+import { Data, Definition, density_, newData, toDirection, toForm, _density } from './definition';
 
 import ColorPicker from './ColorPicker';
 import BigInput from './BigInput';
@@ -47,6 +47,8 @@ export default function GraphSelector({ definition, update }: Props) {
                 <option value="upward">Up ➚</option>
                 <option value="downward">Down ➘</option>
               </Select>
+
+              <input type="range" min="1" max={density_('infinite')} value={density_(value.density)} onChange={e => updateOne(e.target.value, newD => ({ ...value, density: _density(newD) }))} step="1" />
 
               <Input value={value.label} placeholder="Label" onChange={e => updateOne(e.target.value, label => ({ ...value, label }))} />
 
