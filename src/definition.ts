@@ -52,7 +52,7 @@ export function toForm(dir: string): Data["form"] {
     }
 }
 
-const maxBound = 6;
+const maxBound = 10;
 export function density_(val: Data["density"]): number {
     return val === 'infinite' ? maxBound : val;
 }

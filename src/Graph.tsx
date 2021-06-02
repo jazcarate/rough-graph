@@ -9,12 +9,12 @@ type Props = {
   definition: Definition;
 }
 
-const width = 400,
-  height = 300,
+const width = 800,
+  height = 600,
   padding = 10,
-  axisFontSize = 25,
-  titleFontSize = 30,
-  labelFontSize = 15,
+  axisFontSize = 35,
+  titleFontSize = 50,
+  labelFontSize = 25,
   graphPadding = 50;
 
 const startX = padding + axisFontSize + graphPadding,
