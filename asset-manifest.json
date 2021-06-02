@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/rough-graph/static/js/main.5f652836.chunk.js",
-    "main.js.map": "/rough-graph/static/js/main.5f652836.chunk.js.map",
+    "main.js": "/rough-graph/static/js/main.a5b04a2f.chunk.js",
+    "main.js.map": "/rough-graph/static/js/main.a5b04a2f.chunk.js.map",
     "runtime-main.js": "/rough-graph/static/js/runtime-main.8b3d7aa6.js",
     "runtime-main.js.map": "/rough-graph/static/js/runtime-main.8b3d7aa6.js.map",
     "static/js/2.56238f4d.chunk.js": "/rough-graph/static/js/2.56238f4d.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.8b3d7aa6.js",
     "static/js/2.56238f4d.chunk.js",
-    "static/js/main.5f652836.chunk.js"
+    "static/js/main.a5b04a2f.chunk.js"
   ]
 }
