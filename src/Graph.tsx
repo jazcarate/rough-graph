@@ -13,7 +13,7 @@ const width = 800,
   height = 600,
   padding = 10,
   axisFontSize = 35,
-  titleFontSize = 50,
+  titleFontSize = 70,
   labelFontSize = 25,
   graphPadding = 50;
 
@@ -94,7 +94,7 @@ export default function Graph({ definition }: Props) {
       if (definition.title) {
         ctx.textAlign = "center";
         ctx.font = `${titleFontSize}px 'Indie Flower'`;
-        ctx.fillText(definition.title, width / 2, padding + titleFontSize / 2);
+        ctx.fillText(definition.title, width / 2, titleFontSize);
       }
 
       if (definition.yAxis) {
